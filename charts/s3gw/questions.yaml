@@ -51,7 +51,6 @@ questions:
   - "pvc"
   - "local"
   - "longhorn"
-  #- "StorageClass"
   required: true
   label: Storage Type
   group: "Storage"
@@ -83,14 +82,6 @@ questions:
   default: 10Gi
   label: Storage Size
   group: "Storage"
-  #StorageClass for when choosing from a StorageClass is supported for PV provisioning
-  #- variable: storageType
-  #  show_if: storageType=StorageClass
-  #  description: "Storage Class for Type"
-  #  label: "Storage Class"
-  #  required: false
-  
-
 
 #Ingress
 - variable: enableIngress
@@ -100,32 +91,6 @@ questions:
   required: true
   type: boolean
   group: "Ingress"
-# Adding example entries for a future support of a different Service Type
-#- variable: Ingress.type
-#  description: "S3 Service type"
-#  type: enum
-#  show_if: "enableIngress=false"
-#  options:
-#  - "ClusterIP"
-#  - "NodePort"
-#  - "LoadBalancer"
-#  required: true
-#  label: Ingress Service Type
-#  show_subquestion_if: "NodePort"
-#  group: "Services and Load Balancing"
-#  subquestions:
-#  - variable: s3.nodePorts.http
-#    description: "NodePort http port (to set explicitly, choose port between 30000-32767)"
-#    type: int
-#    min: 30000
-#    max: 32767
-#    label: NodePort Http Port
-#  - variable: s3.nodePorts.https
-#    description: "NodePort https port (to set explicitly, choose port between 30000-32767)"
-#    type: int
-#    min: 30000
-#    max: 32767
-#    label: NodePort Https Port
 
 - variable: imageRegistry
   default: "ghcr.io/aquarist-labs"
